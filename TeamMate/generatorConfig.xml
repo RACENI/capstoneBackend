@@ -22,7 +22,7 @@
                          targetProject="TeamMate/src/main/java"/>
     
     
-    <table tableName="users"/>
+    <table tableName="users_info"/>
     
     
   </context>
