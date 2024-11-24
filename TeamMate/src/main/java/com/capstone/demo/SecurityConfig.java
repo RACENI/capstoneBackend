@@ -6,29 +6,31 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.capstone.jwt.JwtAuthenticationFilter;
 import com.capstone.jwt.JwtUtil;
-import com.capstone.jwt.UserDetailsServiceImpl;
+import com.capstone.user.service.OAuth2UserServiceImpl;
+import com.capstone.user.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+	
 	@Autowired
-	private JwtUtil jwtUtil;
+	private JwtUtil jwtutil;
+	 
 	
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
+    
+    @Autowired
+    private OAuth2UserServiceImpl oAuth2UserService;
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -48,7 +50,7 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/axios/login")
                 .failureUrl("/login") // 실패 시 리디렉션 URL 추가
                 .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
-                	    .userService((OAuth2UserService<OAuth2UserRequest, OAuth2User>) userDetailsService)
+                	    .userService(oAuth2UserService)
                 	)
                 )
 		.csrf(csrf -> csrf.disable())

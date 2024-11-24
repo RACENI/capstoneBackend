@@ -83,15 +83,12 @@ public class UserService {
 		
 		UsersInfo record = userDao.selectByPrimaryKey(userDetails.getId());
 		
-		
-		
 		map.put("name", record.getName());
 		map.put("contact", record.getContact());
 		map.put("intro", record.getIntro());
 		map.put("strength", record.getStrength());
 		map.put("region", record.getRegion());
 		
-
 		return map;
 	}
 }

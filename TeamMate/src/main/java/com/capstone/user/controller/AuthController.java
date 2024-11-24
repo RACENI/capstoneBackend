@@ -38,12 +38,12 @@ public class AuthController {
             @RequestPart("name") String name,
             @RequestPart("email") String email,
             @RequestPart("password") String password) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("name", name);
-        response.put("email", email);
-        response.put("password", password);
+        Map<String, Object> request = new HashMap<>();
+        request.put("name", name);
+        request.put("email", email);
+        request.put("password", password);
         
-        response = authService.join(response);
+        Map<String, Object> response = authService.join(request);
 
         return ResponseEntity.ok(response);
     }

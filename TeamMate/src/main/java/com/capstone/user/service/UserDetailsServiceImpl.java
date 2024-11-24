@@ -3,7 +3,7 @@
  *최초 작성일: 2024.11.03
  *목적: JWT 발급시 사용자 정보 전달
 ***/
-package com.capstone.jwt;
+package com.capstone.user.service;
 
 import java.util.ArrayList;
 
@@ -23,9 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	UsersInfoMapper userDao;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 	
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {

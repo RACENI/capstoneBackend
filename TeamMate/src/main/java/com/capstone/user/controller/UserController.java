@@ -30,14 +30,14 @@ public class UserController {
             @RequestPart("intro") String intro,
             @RequestPart("strength") String strength,
             @RequestPart("region") String region) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("name", name);
-        response.put("contact", contact);
-        response.put("intro", intro);
-        response.put("strength", strength);
-        response.put("region", region);
-        
-        response = userService.modifyMyInfo(response);
+        Map<String, Object> request = new HashMap<>();
+        request.put("name", name);
+        request.put("contact", contact);
+        request.put("intro", intro);
+        request.put("strength", strength);
+        request.put("region", region);
+
+        Map<String, Object> response = userService.modifyMyInfo(request);
 
         return ResponseEntity.ok(response);
     }
@@ -47,11 +47,9 @@ public class UserController {
 	 *반환값: ResponseEntity(Map<String, Object>)
 	***/
 	@GetMapping("/api/viewMyInfo")
-    public ResponseEntity<Map<String, Object>> viewMyInfo() {
-        Map<String, Object> response = new HashMap<>();
-        
-        response = userService.viewMyInfo();
+	public ResponseEntity<Map<String, Object>> viewMyInfo() {
+		Map<String, Object> response = userService.viewMyInfo();
 
-        return ResponseEntity.ok(response);
-    }
+		return ResponseEntity.ok(response);
+	}
 }
