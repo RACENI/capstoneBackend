@@ -66,7 +66,7 @@ public class ProjectBoardService {
 		return map;
 	}
 	
-	public  Map<String, Object> modifyBoard(Map<String, Object> request) {
+	public Map<String, Object> modifyBoard(Map<String, Object> request) {
 		Map<String, Object> map = new HashMap<>();
 		
 		//회원정보 가져오기

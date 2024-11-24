@@ -23,7 +23,9 @@
     
     
 <!--     <table tableName="users_info"/> -->
-    <table tableName="projects"/>
+<!--     <table tableName="projects"/> -->
+<!--     <table tableName="user_project"/> -->
+    <table tableName="project_schedule"/>
     
     
   </context>
