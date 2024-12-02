@@ -3,6 +3,8 @@ package com.capstone.dao;
 import com.capstone.vo.Projects;
 import com.capstone.vo.ProjectsExample;
 import com.capstone.vo.ProjectsWithBLOBs;
+import com.capstone.vo.UsersInfo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -91,4 +93,9 @@ public interface ProjectsMapper {
 	 * @mbg.generated  Mon Nov 18 08:18:12 KST 2024
 	 */
 	int updateByPrimaryKey(Projects row);
+	
+	/**
+     * 이하부터 개발자가 생성한 코드
+     */
+	List<ProjectsWithBLOBs> viewProjects(int page);
 }

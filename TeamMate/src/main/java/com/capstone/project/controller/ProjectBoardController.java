@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 
 import com.capstone.dao.ProjectsMapper;
@@ -76,4 +78,15 @@ public class ProjectBoardController {
 
         return ResponseEntity.ok(response);
     }
+	
+	@GetMapping("/projects")
+	public ResponseEntity<Map<String, Object>> getProjectBoard(@RequestParam(value="page") String page) {
+		Map<String, Object> request = new HashMap<>();
+		request.put("page", page);
+		
+		Map<String, Object> response = projectService.getProjectBoard(request);
+		
+		return ResponseEntity.ok(response);
+	}
+	
 }

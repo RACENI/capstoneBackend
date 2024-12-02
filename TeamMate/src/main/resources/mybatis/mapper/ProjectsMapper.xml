@@ -452,4 +452,15 @@
       USER_ID = #{userId,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  
+  <!-- 이하부터 개발자가 생성한 코드-->
+  <select id="viewProjects" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  	SELECT * from projects
+  	<if test="page > 0">
+  		<![CDATA[
+  		WHERE id < #{page}
+  		]]>
+	</if>
+	limit 10
+  </select>
 </mapper>

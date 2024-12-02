@@ -1,4 +1,4 @@
-package com.capstone.demo;
+package com.capstone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

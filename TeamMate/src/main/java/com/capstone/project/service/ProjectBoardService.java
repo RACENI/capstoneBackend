@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,6 +137,18 @@ public class ProjectBoardService {
         if(result > 0) map.put("result", "success");
         else map.put("result", "fail");
         
+		return map;
+	}
+	
+	public Map<String, Object> getProjectBoard(Map<String, Object> request) {
+		Map<String, Object> map = new HashMap<>();
+
+		int page = Integer.parseInt(request.get("page").toString());
+		List<ProjectsWithBLOBs> records = projectDao.viewProjects(page);
+		for (ProjectsWithBLOBs record : records) {
+			map.put(record.getId().toString(), record);
+		}
+		
 		return map;
 	}
 }

@@ -1,4 +1,4 @@
-package com.capstone.demo;
+package com.capstone;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
